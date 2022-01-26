@@ -3,7 +3,8 @@
 # Inspired heavily from bwmenu https://github.com/mattydebie/bitwarden-rofi
 # Prerequisites:
 #  * maim: https://github.com/naelstrof/maim
-#  * xclip: https://github.com/astrand/xclip
+#  * xclip: https://github.com/astrand/xclip (for x11)
+#  * wl-clipboard: https://github.com/bugaevc/wl-clipboard (for wayland)
 #  * rofi: https://github.com/DaveDavenport/rofi
 # Optional:
 #  * libnotify (for notify-send)
@@ -180,6 +181,9 @@ case $save_mode in
   clipboard)
     if which xclip > /dev/null 2>&1; then
       take_screenshot maim "$choice" | xclip -selection clipboard -t image/png
+      send_notification "$choice copied to clipboard"
+    elif which wl-copy > /dev/null 2>&1; then
+      take_screenshot maim "$choice" | wl-copy -t image/png
       send_notification "$choice copied to clipboard"
     else
       rofi -e "Error: Cannot find xclip"

@@ -4,7 +4,8 @@ Rofi Script for using Screenshots using maim
 # Prerequisites
 
 * maim
-* xclip
+* xclip or wl-clipboard
+    * Note: If xclip AND wl-copy are installed, xclip will be used
 * rofi
 * Optional:
     * libnotify (for notify-send)
