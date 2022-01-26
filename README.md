@@ -10,7 +10,7 @@ Rofi Script for using Screenshots using maim
 * Optional:
     * libnotify (for notify-send)
     * dunst (or similar for displaying notifications)
-    * Image viewer (search for in this order):
+    * Image viewer (searched for in this order):
         * nsxiv: https://github.com/nsxiv/nsxiv
         * sxiv: https://github.com/muennich/sxiv
         * feh: https://feh.finalrewind.org/
