@@ -15,20 +15,26 @@ Rofi Script for using Screenshots using maim
         * sxiv: https://github.com/muennich/sxiv
         * feh: https://feh.finalrewind.org/
 
+# TLDR
+
+1. Download the rofi-screenshot script
+2. Put it in a directory in your PATH
+3. Make it executable (chmod 755 rofi-screenshot)
+
 # User Installation
 
 1. Download the latest release file (1.0 in this example)
-1. Extract package: `tar -xvzf rofi-screenshot-1.0.tar.gz`
-1. Change to package directory: `cd rofi-screenshot-1.0`
-1. Run: `make install-user`
-1. Use something like xbindkeys or sxhkd to configure a hot key combination
+2. Extract package: `tar -xvzf rofi-screenshot-1.0.tar.gz`
+3. Change to package directory: `cd rofi-screenshot-1.0`
+4. Run: `make install-user`
+5. Use something like xbindkeys or sxhkd to configure a hot key combination
 
 # System-wide Installation
 
 For advanced users
 
 1. Download and extract a release
-1. Run: sudo make install-system
+2. Run: sudo make install-system
 
 # My xbindkeys example:
 ```
