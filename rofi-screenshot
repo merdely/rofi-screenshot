@@ -14,7 +14,6 @@
 #    * feh: https://feh.finalrewind.org/
 
 progname=${0##*/}
-version=1.0
 
 usage() {
   echo "usage: $progname [-c] [-f|-s]"
@@ -63,9 +62,8 @@ toggle_cursor() {
 
 toggle_delay() {
   case $delay_secs in
-     0) delay_secs=1;;
-     1) delay_secs=2;;
-     2) delay_secs=5;;
+     0) delay_secs=3;;
+     3) delay_secs=5;;
      5) delay_secs=10;;
     10) delay_secs=30;;
     30) delay_secs=60;;
@@ -147,12 +145,12 @@ rofi_menu() {
       xrandr | awk '$2=="connected"{if($3=="primary")r=$4;else r=$3;print "Monitor " $1 " (" r ")"}'
     fi
       } | rofi -dmenu -p 'Take Screenshot' -i -no-custom \
-        -mesg "<b>Alt+c</b>: Toggle Cursor ($cursor_state) | <b>Alt+s</b>: Toggle Save ($save_mode)<b>Alt+d</b>: Toggle Delay ($delay_secs seconds) | <b>Alt+0</b>: Remove Delay | <b>Alt+2</b>: Set Delay to 2 seconds" \
+        -mesg "<b>Alt+c</b>: Toggle Cursor ($cursor_state) | <b>Alt+s</b>: Toggle Save ($save_mode)<b>Alt+d</b>: Toggle Delay ($delay_secs seconds) | <b>Alt+0</b>: Remove Delay | <b>Alt+3</b>: Set Delay to 3 seconds" \
         -select "$choice" \
         -kb-custom-11 Alt+c -kb-custom-12 Alt+s -kb-custom-13 Alt+d)
   case $? in
     0) ;;
-    11) delay_secs=2 ; rofi_menu "$choice";;
+    12) delay_secs=3 ; rofi_menu "$choice";;
     19) delay_secs=0 ; rofi_menu "$choice";;
     20) toggle_cursor ; rofi_menu "$choice";;
     21) toggle_save ; rofi_menu "$choice";;
