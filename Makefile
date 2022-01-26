@@ -1,6 +1,6 @@
 DESTDIR ?= /usr/local
 progname = rofi-screenshot
-version = $(shell cat version.txt)
+version = $(shell sh ./rofi-screenshot -VV)
 group = root
 ifeq (`uname -s`), OpenBSD)
 	group = bin

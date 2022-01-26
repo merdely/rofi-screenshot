@@ -15,9 +15,10 @@
 #    * feh: https://feh.finalrewind.org/
 
 progname=${0##*/}
+version=1.4
 
 usage() {
-  echo "usage: $progname [-c] [-f|-s]"
+  echo "usage: $progname [-V] [-c] [-f|-s]"
 }
 
 if ! which rofi > /dev/null 2>&1; then
@@ -84,7 +85,8 @@ cursor=-u
 cursor_state=hidden
 delay_secs=0
 save_mode=clipboard
-while getopts ":hcd:fs" opt; do
+v_count=0
+while getopts ":hVcd:fs" opt; do
   case $opt in
     c)
       toggle_cursor
@@ -103,11 +105,26 @@ while getopts ":hcd:fs" opt; do
       toggle_save
       toggle_save
       ;;
-    h|\?) usage
+    V)
+      v_count=$((v_count+1))
+      ;;
+    h|\?)
+      usage
       ;;
   esac
 done
 shift $((OPTIND -1))
+
+case $v_count in
+  1)
+    echo $progname $version
+    exit 0
+    ;;
+  2)
+    echo $version
+    exit 0
+    ;;
+esac
 
 maim_installed=0
 flameshot_installed=0
